@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Download U.S. Population Data - SEER Population Data</title>
+
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/s/base.css" />
+<link rel="stylesheet" href="/s/styles.css" />
+<link rel="stylesheet" type="text/css" href="/s/jquery.qtip.min.css">
+
+<link rel="stylesheet" href="/s/print.css" media="print" />
+
+<script src="/toolbox/javascript/jquery-1.12.4.min.js"></script>
+<script src="/j/jquery.qtip.min.js" type="text/javascript"></script>
+
+<!-------------------------Meta Tags for Social Sharing---------------------------------->
+<!----TWITTER---->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@NCICancerStats" />
+<meta name="twitter:creator" content="@NCICancerStats" />
+<meta name="twitter:image" content="https://seer.cancer.gov/i/tile-fact.jpg" />
+
+<!----Open Graph---->
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://seer.cancer.gov/i/tile-fact.jpg" />
+<meta property="og:site_name" content="SEER" />
+<!--custom_head--><!-- Start Meta Tag Insertion - Do Not Edit - See /source_files/add_metatags -->
+					  <meta name="description" content="U.S. county-level population data files for  all states combined or by state, for 19 age groups or single-year age groups, by race.">
+					   <meta property="twitter:title" content="Download U.S. Population Data - SEER Population Data"> 
+				       <meta property="twitter:description" content="U.S. county-level population data files for  all states combined or by state, for 19 age groups or single-year age groups, by race."> 
+				       <meta property="twitter:url" content="https://seer.cancer.gov/popdata/download.html"> 
+				       <meta property="og:title" content="Download U.S. Population Data - SEER Population Data"> 
+				       <meta property="og:description" content="U.S. county-level population data files for  all states combined or by state, for 19 age groups or single-year age groups, by race."> 
+				       <meta property="og:url" content="https://seer.cancer.gov/popdata/download.html"> 
+				       <!-- End Meta Tag Insertion --><!--/custom_head--></head>
+
+<body class="datasets " onload='IMS_Onload.run();'>
+	<a class="sr-only sr-only-focusable" href="#skipnav">Skip to Main Content</a>
+<!-- NCI COVID Banner Styles -->
+<style type="text/css">
+.notification-banner>div>div{padding:0;margin:0}.alert-drawer-wrapper{background:#fada87;padding:.5em 1.25em;margin-bottom:1px;min-height:0}.alert-drawer__body{display:none;flex-wrap:wrap;list-style-type:none;padding:0;justify-content:space-between;margin:.5em 0 0;border-top:1px solid #606060}.alert-drawer__body li{display:block;font:14px/19px "Noto Sans",Arial,sans-serif;color:#606060;margin:.5em .5em .5em 0}.alert-drawer__body li::before{content:"\2022"}.alert-drawer{margin:0 auto;padding:0}.alert-drawer__body li a{text-decoration:none}.alert-drawer__body li a:active,.alert-drawer__body li a:focus,.alert-drawer__body li a:hover{text-decoration:underline}.alert-drawer__body.active{display:block}.alert-drawer__body.active+.alert-drawer__toggle button::after{content:"";display:none}.alert-drawer__toggle{display:block;text-align:center}.alert-drawer__toggle button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:0 0;border:none;cursor:pointer;margin:0 auto}.alert-drawer__toggle button::after{content:"Expand for resources";display:block;font:12px/19px "Noto Sans",Arial,sans-serif;color:#606060;text-align:center}html[lang=es] .alert-drawer__toggle button::after{content:"Mostrar más recursos"}.alert-drawer .alert-drawer-title{font:bold 16px/19px "Noto Sans",Arial,sans-serif;color:#444}.alert-drawer a{text-decoration:underline;color:#606060}.ellipse{display:none}.ellipse::before{content:"\2026"}@media only screen and (min-width:768px){.alert-drawer__body.active{display:flex}.alert-drawer__body li{display:inline-block}}@media only screen and (min-width:1025px){.alert-drawer{margin:0 auto;max-width:62.5em;padding-left:10px}.alert-drawer.expanded{min-height:1px}html[lang=es] .alert-drawer.expanded{min-height:100px}.alert-drawer.collapsed{min-height:30px}html[lang=es] .alert-drawer.collapsed{min-height:30px}.alert-drawer .alert-drawer-title{font:bold 20px/24px "Noto Sans",Arial,sans-serif}}@media only screen and (min-width:1441px){.alert-drawer{max-width:1200px;padding-left:20px}}@media only print{.notification-banner{display:none}.alert-drawer-wrapper{display:none}}
+</style>
+
+<!-- NCI COVID Banner Container -->
+<div class="alert-drawer-wrapper" role="alertdialog" aria-label="COVID-19 Message">
+</div>
+
+<!-- NCI COVID Banner Create -->
+<script type="text/javascript">
+// CONFIG FOR BANNER
+(function (w, d) {
+  w.c19 = w.c19 || {};
+  w.c19.title = "COVID-19 Resources";
+  w.c19.toggleLabelText = {
+    expand: "Click to expand list of COVID-19 resources",
+    collapse: "Click to collapse list of COVID-19 resources"
+  };
+  w.c19.links = [
+    {
+      text: "What people with cancer should know",
+      url: "https://www.cancer.gov/coronavirus"
+    },
+    {
+      text: "Guidance for cancer researchers",
+      url: "https://www.cancer.gov/coronavirus-researchers"
+    },
+    {
+      text: "Get the latest public health information from CDC",
+      url: "https://www.cdc.gov/coronavirus"
+    },
+    {
+      text: "Get the latest research information from NIH",
+      url: "https://covid19.nih.gov"
+    }
+  ];
+})(window, document);
+
+// BANNER FUNCTIONALITY
+(function (w, d) {
+  w.c19 = w.c19 || {};
+
+  function clb(links) {
+    if (!links || links.length < 1) return "";
+    var link = links[0];
+    return (
+      "<li>" +
+      ' <a href="' +
+      link.url +
+      '">' +
+      link.text +
+      "</a>" +
+      "</li>" +
+      clb(links.slice(1))
+    );
+  }
+
+  function IS_DESKTOP() {
+    return window.innerWidth > 1024;
+  }
+
+  w.c19.insert = function () {
+    var wrapper = d.querySelector(".alert-drawer-wrapper");
+    if (!wrapper) {
+      if (wrapper) console.error("Could not find alert wrapper for banner");
+      return;
+    }
+
+    var heading = d.createElement("div");
+    heading.classList.add("alert-drawer__heading");
+    heading.innerHTML =
+      '<span class="alert-drawer-title">' + w.c19.title + "</span>";
+
+    var linksBody = d.createElement("ul");
+    linksBody.setAttribute("tabindex", "0");
+    linksBody.id = "alert-drawer-body";
+    linksBody.classList.add("alert-drawer__body");
+    if (IS_DESKTOP()) {
+      linksBody.classList.add("active");
+    }
+    linksBody.innerHTML = clb(w.c19.links);
+
+    var toggleBtn = d.createElement("button");
+    toggleBtn.setAttribute("type", "button");
+    toggleBtn.setAttribute("aria-controls", "alert-drawer-body");
+    toggleBtn.id = "alert-toggle-btn"; // Desktop shows X, but mobile and collapsed is down arrow.
+    var isExpanded = IS_DESKTOP();
+    var toggleBtnImg = isExpanded
+      ? "/toolbox/images/dccps/white-x.png"
+      : "/toolbox/images/dccps/white-down-arrow.png";
+    toggleBtn.setAttribute(
+      "aria-label",
+      isExpanded ? w.c19.toggleLabelText.collapse : w.c19.toggleLabelText.expand
+    );
+    toggleBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+    toggleBtn.innerHTML =
+      '<img id="alert-toggle-img" src="' +
+      toggleBtnImg +
+      '" alt="" aria-hidden="true" />';
+    toggleBtn.addEventListener("click", function () {
+      var alertBody = document.querySelector(".alert-drawer__body");
+      var wasOpen = alertBody.classList.contains("active"); //toggle aria-expanded, this being the toggleBtn
+      this.setAttribute("aria-expanded", wasOpen ? "false" : "true");
+      this.setAttribute(
+        "aria-label",
+        wasOpen ? w.c19.toggleLabelText.expand : w.c19.toggleLabelText.collapse
+      );
+
+      var alertDrawer = document.querySelector(".alert-drawer");
+      alertDrawer.classList.toggle("expanded");
+      alertDrawer.classList.toggle("collapsed");
+
+      var alertImg = "";
+      alertBody.classList.toggle("active");
+      if (alertBody.className.match("active")) {
+        alertBody.focus();
+        alertImg =
+          "/toolbox/images/dccps/white-x.png";
+      } else {
+        alertImg =
+          "/toolbox/images/dccps/white-down-arrow.png";
+      }
+      document.getElementById("alert-toggle-img").setAttribute("src", alertImg);
+    });
+
+    var toggle = d.createElement("div");
+    toggle.classList.add("alert-drawer__toggle");
+    toggle.appendChild(toggleBtn);
+    var drawer = d.createElement("ul");
+    drawer.classList.add("alert-drawer"); // Launch adds default styles, but we should also set the state of the // drawer on initialize.
+    if (IS_DESKTOP()) {
+      drawer.classList.add("expanded");
+    }
+    drawer.appendChild(heading);
+    drawer.appendChild(linksBody);
+    drawer.appendChild(toggle);
+
+    wrapper.innerHTML = "";
+    wrapper.appendChild(drawer);
+  };
+})(window, document);
+
+window.c19.insert();
+</script>
+<!-- Blue Header -->
+<!-- NCI, SEER, Search, Navigation -->
+<!-- HEADER -->
+<header class="push" role="banner">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-8">
+		        <a class="seerLogo" href="/" title="Return Home">
+		        	<img src="/i/seer.svg" alt="Surveillance, Epidemiology, and End Results Program" />
+		        </a>
+            </div>
+            <div class="col-sm-4 search">
+				<!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox"></div>
+		        <form action="/search" method="get" name="search" onSubmit="return searchCheck(this.q) && NCIAnalytics.SiteSearch(this);">
+                        <label for="searchsite">Search SEER:</label>
+                        <input id="searchsite" type="text" size="15" name="q" placeholder="Search SEER" />
+                        <input type="image" src="/i/search_btn.png" class="greenBtn" alt="Search" />
+                </form>
+            </div>
+        </div>
+ </div>
+
+</header>
+<!-- END HEADER -->
+<div class="fixedtotop">
+ <div class="mobile-menu-bar navopen-menu-mobile"><button aria-expanded="false" type="button" class="open-panel nav-header menu-btn">Menu</button></div>
+</div>
+
+<div id="topnav">
+
+    <!-- Global nav/utilit bar/language  -->
+        <!-- BEGIN NAVIGATION -->
+        <!-- Begin nav-search bar -->
+        <div class="nav-search-bar gradient header container"><div id="nvcgSlMainNav" class="row">
+
+	<div class="slot-item first-SI">
+		<div class="navigation" role="application">
+
+			<nav id="mega-nav" role="navigation">
+				<ul class="menu nav-menu">
+					<li class="nav-item lvl-1 item-1 home">
+						<div class="nav-item-title">
+						<a href="/">Home</a>
+						</div><ul class="mobile-item">
+						      </ul>
+					</li>
+					<li class="nav-item lvl-1 has-children item-2 statistics">
+						<div class="nav-item-title">
+						<a href="/statistics/"><span>Cancer Statistics</span> <img src="/i/caret-down-sm-f.png" alt="" /></a>
+						</div>
+						<ul class="mobile-item">
+						<li class="lvl-2 has-children">
+							<div class="nav-item-title">
+							<a href="/statistics/reports.html">Reports on Cancer</a>
+						</div>
+							<ul class="mobile-item">
+							<li class="lvl-3">
+								<div class="nav-item-title">
+								<a href="/report_to_nation/">Annual Report to the Nation on the Status of Cancer</a>
+							</div>
+							</li>
+							<li class="lvl-3">
+								<div class="nav-item-title">
+								<a href="/statfacts/">Cancer Stat Facts</a>
+							</div>
+							</li>
+							<li class="lvl-3">
+								<div class="nav-item-title">
+								<a href="/csr/">Cancer Statistics Review</a>
+							</div>
+							</li>
+							<li class="lvl-3">
+								<div class="nav-item-title">
+									<a href="/publications/">SEER Publications</a>
+								</div>
+							</li>	
+						</ul></li>
+							<li class="lvl-2"><div class="nav-item-title">
+							<a href="/statistics/nccr/">National Childhood Cancer Registry</a>
+						</div></li>
+							<li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/statistics/interactive.html">Interactive Tools, Maps, &amp; Graphs</a>
+						</div><ul class="mobile-item">
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/explorer/">SEER*Explorer</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/canques/">Cancer Query Systems</a>
+							</div></li>
+						</ul></li>
+							<li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/statistics/resources.html">Understanding Statistics</a>
+						</div><ul class="mobile-item">
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/statistics/videos/">Did You Know? Video Series</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/statistics/types.html">Defining Cancer Statistics</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/cgi-bin/glossary/glossary.pl">Glossary of Statistical Terms</a>
+							</div></li>
+						</ul></li>
+					</ul><div aria-expanded="false" aria-haspopup="true" class="sub-nav-mega">
+						<div class="sub-nav-group-wrapper"><div class="sub-nav-group-subwrapper">
+							<ul class="sub-nav-group one-third"><li><a href="/statistics/reports.html" class="sub-nav-group-header">Reports on Cancer</a>
+							  <ul>
+							    <li><a href="/report_to_nation/">Annual Report to the Nation on the Status of Cancer</a></li>
+							    <li><a href="/statfacts/">Cancer Stat Facts</a></li>
+							    <li><a href="/csr/">Cancer Statistics Review</a></li> 
+						  </ul></li></ul>
+							<ul class="sub-nav-group one-third"><li><a href="/statistics/nccr/" class="sub-nav-group-header">National Childhood Cancer Registry</a></li><br>
+								<li><a href="/statistics/interactive.html" class="sub-nav-group-header">Interactive Tools, Maps, &amp; Graphs</a>
+							  <ul>
+							    <li><a href="/explorer/">SEER*Explorer</a></li>
+							    <li><a href="/canques/">Cancer Query Systems</a></li>
+                                <li></li>
+							  </ul></li></ul>
+							<ul class="sub-nav-group one-third"><li><a href="/statistics/resources.html" class="sub-nav-group-header">Understanding Statistics</a>
+							  <ul>
+							    <li><a href="/statistics/videos/">Did You Know? Video Series</a></li>
+							    <li><a href="/statistics/types.html">Defining Cancer Statistics</a></li>
+							    <li><a href="/cgi-bin/glossary/glossary.pl">Glossary of Statistical Terms</a></li>
+							  </ul></li></ul>
+							
+						</div></div>
+					</div></li>
+					<li class="nav-item lvl-1 has-children item-3 data-soft"><div class="nav-item-title">
+						<a href="/data-software/"><span>SEER Data &amp; Software</span> <img src="/i/caret-down-sm-f.png" alt="" /></a>
+					</div><ul class="mobile-item">
+						<li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/data/">SEER Incidence Database</a>
+						</div><ul class="mobile-item">
+                            <li class="lvl-3"><div class="nav-item-title">
+								<a href="/data/product-comparison.html">Comparison of Data Products</a>
+							</div></li>
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/data/access.html">How to Request the Data</a>
+							</div></li>
+						</ul></li><li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/data-software/documentation/">Documentation for Data</a>
+						</div><ul class="mobile-item">
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/data-software/documentation/seerstat/">SEER*Stat Database Details</a>
+							</div></li><li class="lvl-3">
+							  <div class="nav-item-title">
+								<a href="/analysis/">Variable and Recode Definitions</a>
+							</div></li>
+						</ul></li><li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/data-software/datasets.html">U.S. Datasets</a>
+						</div><ul class="mobile-item">
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/mortality/">U.S. Mortality</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/popdata/">U.S. Populations</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/stdpopulations/">Standard Populations</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/data-software/linked_databases.html">SEER Linked Databases</a>
+							</div></li>
+						</ul></li><li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/data-software/software.html">Statistical Software</a>
+						</div><ul class="mobile-item">
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/seerstat/">SEER*Stat</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/seerprep/">SEER*Prep</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="https://surveillance.cancer.gov/tools/" class="exit">Methods &amp; Tools for Population-based Cancer Statistics</a>
+							</div></li>
+						</ul></li>
+					</ul><div aria-expanded="false" aria-haspopup="true" class="sub-nav-mega">
+						<div class="sub-nav-group-wrapper"><div class="sub-nav-group-subwrapper">
+							<ul class="sub-nav-group"><li><a href="/data/" class="sub-nav-group-header">SEER Incidence Database</a>
+							  <ul>
+                                <li><a href="/data/product-comparison.html">Comparison of Data Products</a></li> <li><a href="/data/access.html">How to Request the Data</a></li>
+							  </ul></li></ul>
+							<ul class="sub-nav-group"><li><a href="/data-software/documentation/" class="sub-nav-group-header">Documentation for Data</a>
+							  <ul>
+							    <li><a href="/data-software/documentation/seerstat/">SEER*Stat Database Details</a></li>
+							    <li><a href="/analysis/">Variables and Recode Definitions</a></li> 
+							  </ul></li></ul>
+							<ul class="sub-nav-group"><li><a href="/data-software/datasets.html" class="sub-nav-group-header">U.S. Datasets</a>
+							  <ul>
+							    <li><a href="/mortality/">U.S. Mortality</a></li>
+							    <li><a href="/popdata/">U.S. Populations</a></li>
+							    <li><a href="/stdpopulations/">Standard Populations</a></li>
+							    <li><a href="/data-software/linked_databases.html">SEER Linked Databases</a></li>
+							  </ul></li></ul>
+							<ul class="sub-nav-group"><li><a href="/data-software/software.html" class="sub-nav-group-header">Statistical Software</a>
+							  <ul>
+							    <li><a href="/seerstat/">SEER*Stat</a></li>
+							    <li><a href="/seerprep/">SEER*Prep</a></li>
+							    <li><a href="https://surveillance.cancer.gov/tools/" class="exit">Methods &amp; Tools for Population-based Cancer Statistics</a></li>
+							  </ul></li></ul>
+						</div></div>
+					</div></li>
+					<li class="nav-item lvl-1 has-children item-4 registrars"><div class="nav-item-title">
+						<a href="/registrars/"><span>Registry Operations</span> <img src="/i/caret-down-sm-f.png" alt="" /></a>
+					</div><ul class="mobile-item">
+						<li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/registrars/guidelines.html">Reporting Guidelines</a>
+						</div><ul class="mobile-item">
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/tools/codingmanuals/index.html">SEER Program Coding Manual</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/tools/heme/">Hematopoietic Project</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/tools/solidtumor/">2018 Solid Tumor Rules</a>
+							</div></li>
+						</ul></li><li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/registrars/tools-software.html">Tools &amp; Software</a>
+						</div>
+						<ul class="mobile-item">
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/seertools/glossary/">Glossary for Registrars</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/tools/seerrx/">SEER*Rx - Drug Database</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/seerabs/">SEER Abstracting Tool</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/seerdms/index.html">SEER Data Management System (SEER*DMS)</a>
+							</div>
+							</li>
+						</ul></li><li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/registrars/qa.html">Questions &amp; Answers</a>
+						</div><ul class="mobile-item">
+                       		<li class="lvl-3"><div class="nav-item-title">
+								<a href="/seerinquiry/index.php">SEER Inquiry System</a>
+							</div></li>
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/registrars/contact.html">Ask a SEER Registrar</a>
+							</div></li>
+                            <li class="lvl-3"><div class="nav-item-title">
+								<a href="/registrars/data-collection.html">Data Collection Answers</a>
+							</div></li>
+						</ul></li><li class="lvl-2 has-children"><div class="nav-item-title">
+							<a href="/registrars/staging.html">Staging</a>
+						</div><ul class="mobile-item">
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/tools/staging/rsa.html">Registrar Staging Assistant (SEER*RSA)</a>
+							</div></li><li class="lvl-3">
+							  <div class="nav-item-title">
+								<a href="/tools/ssm/">Summary Stage 2018</a>
+							</div></li><li class="lvl-3"><div class="nav-item-title">
+								<a href="/tools/staging/index.html">Staging Resources</a>
+							</div></li>
+							<li class="lvl-3"><div class="nav-item-title">
+								<a href="/tools/staging/eod/">Extent of Disease 2018</a>
+							</div></li>
+						</ul></li><li class="lvl-2"><div class="nav-item-title">
+							<a href="/training">Training</a>
+						</div><ul class="mobile-item">
+						  <li class="lvl-3"><div class="nav-item-title"></div></li>
+						</ul></li>
+					</ul><div aria-expanded="false" aria-haspopup="true" class="sub-nav-mega">
+						<div class="sub-nav-group-wrapper"><div class="sub-nav-group-subwrapper">
+							<ul class="sub-nav-group"><li><a href="/registrars/guidelines.html" class="sub-nav-group-header">Reporting Guidelines</a>
+							  <ul>
+							    <li><a href="/tools/codingmanuals/index.html">SEER Program Coding Manual</a></li>
+							    <li><a href="/tools/heme/">Hematopoietic Project</a></li>
+							    <li><a href="/tools/solidtumor/">2018 Solid Tumor Rules</a></li>
+							  </ul></li></ul>
+							<ul class="sub-nav-group"><li><a href="/registrars/tools-software.html" class="sub-nav-group-header">Tools &amp; Software</a>
+							  <ul>
+							    <li><a href="/seertools/glossary/">Glossary for Registrars</a></li>
+							    <li><a href="/tools/seerrx/">SEER*Rx - Drug Database</a></li>
+							    <li><a href="/seerabs/">SEER Abstracting Tool</a></li>
+									<li><a href="/seerdms/index.html">SEER Data Management System (SEER*DMS)</a></li>
+							  </ul></li></ul>
+							<ul class="sub-nav-group"><li><a href="/registrars/qa.html" class="sub-nav-group-header">Questions &amp; Answers</a>
+							  <ul>
+ 								<li><a href="/seerinquiry/index.php">SEER Inquiry System</a></li>
+                                <li><a href="/registrars/contact.html">Ask a SEER Registrar</a></li>
+							    <li><a href="/registrars/data-collection.html">Data Collection Answers</a></li>
+							  </ul></li></ul>
+							<ul class="sub-nav-group"><li><a href="/registrars/staging.html" class="sub-nav-group-header">Staging</a>
+							  <ul>
+							    <li><a href="/tools/staging/rsa.html">Registrar Staging Assistant (SEER*RSA)</a></li>
+							    <li><a href="/tools/ssm/">Summary Stage 2018</a></li>
+                                <li><a href="/tools/staging/index.html">Staging Resources</a></li>
+								<li><a href="/tools/staging/eod/">Extent of Disease 2018</a></li>
+							  </ul></li><br />
+							  <li><a href="/training/" class="sub-nav-group-header">Training</a></li>
+							</ul>
+						</div></div>
+					</div></li>
+					<li class="nav-item lvl-1 item-5 news"><div class="nav-item-title">
+						<a href="/news/">News</a>
+						</div><ul class="mobile-item">
+						      </ul></li>
+					<li class="nav-item lvl-1 item-6 about"><div class="nav-item-title">
+						<a href="/about/">About</a>
+						</div><ul class="mobile-item">
+						      </ul></li>
+
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+	<div class="slot-item last-SI"></div>
+</div></div>
+        <!-- End nav-search bar -->
+        <!-- END NAVIGATION -->
+    <!-- END Global nav/utility bar/language -->
+
+</div>
+<!-- End topnav -->
+
+ 
+
+<!-- White Section -->
+<div class="section">
+	<div class="highlighted">
+    	<!-- Crumbs -->
+        <div class="container">  
+			<button class="togLeftNav button" data-toggle="modal" data-target="#leftNav"><span>Section Menu</span></button>
+            <div class="crumbs"><a class="home" href="/"><img src="/i/icn_home.png" alt="Return Home" /> Home</a>  <img class="arrow" src="/i/crumb_arrow.png" alt=""/> <a href="/data-software/">SEER Data &amp; Software</a> <img class="arrow" src="/i/crumb_arrow.png" alt=""/> <a href="/data-software/datasets.html">U.S. Datasets</a> <img class="arrow" src="/i/crumb_arrow.png" alt=""/> <a href="/popdata/">U.S. Population Data</a> <img class="arrow" src="/i/crumb_arrow.png" alt=""/> Download U.S. Population Data</div>            <h1><!--body_title-->Download U.S. Population Data - 1969-2019 <br>
+<span class="release">Released February 2021</span><!--/body_title--></h1>
+        </div>    	
+		    </div>
+    <div class="container body"><img src="/i/left-body.png" alt="" class="bg-front">
+    	<div class="row">
+    	<!-- Smaller, Aside Column -->
+        <div class="col-md-3">
+           	
+ 	 	 	<div class="leftNav-wrap">
+            	<nav class="subNav leftNav" aria-label="Datasets">			
+	<strong><a href="/data-software/datasets.html">Datasets</a></strong>
+	<ul>	
+		<li><a href="/mortality/">U.S. Mortality Data</a></li>
+		<li><a href="/popdata/">U.S. Population Data</a>
+			<ul>
+				<li><a class="active" href="/popdata/download.html">Download U.S. Population Data</a></li>
+				<li><a href="/popdata/singleages.html">Single Year of Age County Population Estimates</a></li>
+				<li><a href="/popdata/methods.html">Estimates Used in SEER*Stat Software</a></li>
+			</ul>
+		</li>
+		<li><a href="/stdpopulations/">Standard Population Data</a>
+			<ul>
+				<li><a href="/stdpopulations/stdpopdic.html">Data Dictionary</a></li>
+				<li><a href="/stdpopulations/single_age.html">U.S. Standard Population vs. Standard Million</a></li>
+				<li><a href="/stdpopulations/survival.html">Age Standards for Survival</a></li>
+				<li><a href="/stdpopulations/2000stdpop-use.html">Use of the 2000 U.S. Standard Population</a></li>
+			</ul>
+		</li>
+
+		<li><a href="/seerstat/variables/countyattribs/">County Attributes</a>
+			<ul>
+				<li><a href="/seerstat/variables/countyattribs/static.html">Static County Attributes</a></li>
+				<li><a href="/seerstat/variables/countyattribs/time-dependent.html">Time-dependent County Attributes</a></li>
+				
+			</ul>
+		</li>
+		<li><a href="/expsurvival/">Expected Survival Life Tables</a>
+			<ul>
+				<li><a href="/expsurvival/documentation.html">Documentation for the Tables</a></li>
+				<li><a href="/expsurvival/esdatadic.html">Data Dictionary</a></li>
+			</ul>
+		</li>
+	   <li><a href="/data-software/linked_databases.html">SEER Linked Databases</a></li>
+	  </ul>
+</nav>			</div>
+        </div>
+        <!-- Main Content Column -->	
+        <main class="col-md-9" id="content" role="main">          
+            <a name="skipnav" id="skipnav" tabindex="-1"></a>
+            <!--body_content--><p>Files containing U.S. population data are provided  for analysis using your own statistical software or using <a href="/seerstat/">SEER*Stat</a> (you must use the <a href="/seerprep/">SEER*Prep</a> software to create a database for use in SEER*Stat).</p>
+
+<h2>Notes</h2>
+<ul>
+  <li>The U.S. Census Bureau annually releases <a href="https://www.census.gov/programs-surveys/popest.html"> unbridged  population estimates for five-year age groups and race at the county level</a>. The Census Bureau does not release bridged race estimates by single year of age  at the county level due to concerns about the reliability of these estimates.  However, these estimates are provided to the National Cancer Institute to meet  programmatic needs such as the creation of age groupings that differ from the  standard groupings used by the Census Bureau. Users of the single-year-of-age  county-level bridged race population estimates should carefully consider the  limited reliability of these estimates.</li>
+  <li>Annual data releases include both an additional year of data and updates to previous estimates for all years going back to the last decennial census (see <a href="/popdata/methods.html">Population Estimates Used in NCI's SEER*Stat Software</a>).</li>
+</ul>
+
+<h2>Available Files</h2>
+<p>Populations are available for the following time periods and &quot;races&quot;:</p>                              
+<ul>
+  <li>1969-2019 County-level: White, Black, Other;</li>
+    <li>1990-2019 County-level: Expanded Races (White, Black, American Indian/Alaska Native, Asian/Pacific Islander) by Origin (Hispanic, Non-Hispanic);</li>
+</ul>
+
+<p>County-level population files with 19 age groups (&lt;1, 1-4, ..., 80-84, 85+) and with 86 single-year age groups (&lt;1, 1, 2, ..., 84, 85+) are provided below.</p>
+
+<p><span class="lg_spaced">For the All States Combined and four states (Alabama, Louisiana, Mississippi, and Texas), two sets of population estimates are available for 2005: the standard set based on July 1 populations and a set that has been adjusted for the population shifts due to hurricanes Katrina (August 29) and Rita (September 24)</span>. For more information, see <a href="/popdata/hurricane_adj.html"> Adjusted Populations for the Counties/Parishes Affected by Hurricanes Katrina and Rita</a>.</p>
+
+<h2>Data Files for Download</h2>
+
+<p>The data are stored in text files and provided here as Windows self-extracting ZIP files (executables) and gzip files. File format information is provided in the <a href="popdic.html">Population Data Dictionary</a>. The files are grouped by the following categories:</p>
+<ul>
+    <li><a href="#19">County-level Population Files - 19 Age Groups</a></li>
+    <li><a href="#single">County-level Population Files -Single-year Age Groups</a></li>
+</ul>
+            
+            
+         <div class="table-responsive">
+			   <h3 class="caption">County-Level Population Files - 19 Age Groups</h3>
+			   <table class="even_alternating">
+			   	<thead>
+               <tr>
+                <th scope="col">State</th>
+                <th scope="col"> 1969-2019 White, Black, Other</th>
+                <th scope="col">1990-2019<br>
+								4 Expanded Races by Origin</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">All States Combined<br>
+(<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.19ages/us.1969_2019.19ages.adjusted.exe">us.1969_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 24.0 MB)</span>, <a href="yr1969_2019.19ages/us.1969_2019.19ages.adjusted.txt.gz">.gz</a> </td>
+                <td><a href="yr1990_2019.19ages/us.1990_2019.19ages.adjusted.exe">us.1990_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 27.8 MB)</span>, <a href="yr1990_2019.19ages/us.1990_2019.19ages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">All States Combined</th>
+                <td><a href="yr1969_2019.19ages/us.1969_2019.19ages.exe">us.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 24.3 MB)</span>, <a href="yr1969_2019.19ages/us.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/us.1990_2019.19ages.exe">us.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 27.7 MB)</span>, <a href="yr1990_2019.19ages/us.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Alabama (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.19ages/al.1969_2019.19ages.adjusted.exe">al.1969_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 670 KB)</span>, <a href="yr1969_2019.19ages/al.1969_2019.19ages.adjusted.txt.gz">.gz</a> </td>
+                <td><a href="yr1990_2019.19ages/al.1990_2019.19ages.adjusted.exe">al.1990_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 706 KB)</span>, <a href="yr1990_2019.19ages/al.1990_2019.19ages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Alabama</th>
+                <td><a href="yr1969_2019.19ages/al.1969_2019.19ages.exe">al.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 670 KB)</span>, <a href="yr1969_2019.19ages/al.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/al.1990_2019.19ages.exe">al.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 707 KB)</span>, <a href="yr1990_2019.19ages/al.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Louisiana (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.19ages/la.1969_2019.19ages.adjusted.exe">la.1969_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 665 KB)</span>, <a href="yr1969_2019.19ages/la.1969_2019.19ages.adjusted.txt.gz">.gz</a> </td>
+                <td><a href="yr1990_2019.19ages/la.1990_2019.19ages.adjusted.exe">la.1990_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 720 KB)</span>, <a href="yr1990_2019.19ages/la.1990_2019.19ages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Louisiana</th>
+                <td><a href="yr1969_2019.19ages/la.1969_2019.19ages.exe">la.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 677 KB)</span>, <a href="yr1969_2019.19ages/la.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/la.1990_2019.19ages.exe">la.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 721 KB)</span>, <a href="yr1990_2019.19ages/la.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Mississippi (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.19ages/ms.1969_2019.19ages.adjusted.exe">ms.1969_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 732 KB)</span>, <a href="yr1969_2019.19ages/ms.1969_2019.19ages.adjusted.txt.gz">.gz</a> </td>
+                <td><a href="yr1990_2019.19ages/ms.1990_2019.19ages.adjusted.exe">ms.1990_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 772 KB)</span>, <a href="yr1990_2019.19ages/ms.1990_2019.19ages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Mississippi</th>
+                <td><a href="yr1969_2019.19ages/ms.1969_2019.19ages.exe">ms.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 723 KB)</span>, <a href="yr1969_2019.19ages/ms.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ms.1990_2019.19ages.exe">ms.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 774 KB)</span>, <a href="yr1990_2019.19ages/ms.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Texas (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.19ages/tx.1969_2019.19ages.adjusted.exe">tx.1969_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 1.8 MB)</span>, <a href="yr1969_2019.19ages/tx.1969_2019.19ages.adjusted.txt.gz">.gz</a> </td>
+                <td><a href="yr1990_2019.19ages/tx.1990_2019.19ages.adjusted.exe">tx.1990_2019.19ages.adjusted.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1990_2019.19ages/tx.1990_2019.19ages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Texas</th>
+                <td><a href="yr1969_2019.19ages/tx.1969_2019.19ages.exe">tx.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 1.8 MB)</span>, <a href="yr1969_2019.19ages/tx.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/tx.1990_2019.19ages.exe">tx.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1990_2019.19ages/tx.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Alaska</th>
+                <td><a href="yr1969_2019.19ages/ak.1969_2019.19ages.exe">ak.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 316 KB)</span>, <a href="yr1969_2019.19ages/ak.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ak.1990_2019.19ages.exe">ak.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 367 KB)</span>, <a href="yr1990_2019.19ages/ak.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Arkansas</th>
+                <td><a href="yr1969_2019.19ages/ar.1969_2019.19ages.exe">ar.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 695 KB)</span>, <a href="yr1969_2019.19ages/ar.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ar.1990_2019.19ages.exe">ar.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 714 KB)</span>, <a href="yr1990_2019.19ages/ar.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Arizona</th>
+                <td><a href="yr1969_2019.19ages/az.1969_2019.19ages.exe">az.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 309 KB)</span>, <a href="yr1969_2019.19ages/az.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/az.1990_2019.19ages.exe">az.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 355 KB)</span>, <a href="yr1990_2019.19ages/az.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">California</th>
+                <td><a href="yr1969_2019.19ages/ca.1969_2019.19ages.exe">ca.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 710 KB)</span>, <a href="yr1969_2019.19ages/ca.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ca.1990_2019.19ages.exe">ca.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 859 KB)</span>, <a href="yr1990_2019.19ages/ca.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Colorado</th>
+                <td><a href="yr1969_2019.19ages/co.1969_2019.19ages.exe">co.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 567 KB)</span>, <a href="yr1969_2019.19ages/co.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/co.1990_2019.19ages.exe">co.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 640 KB)</span>, <a href="yr1990_2019.19ages/co.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Connecticut</th>
+                <td><a href="yr1969_2019.19ages/ct.1969_2019.19ages.exe">ct.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 248 KB)</span>, <a href="yr1969_2019.19ages/ct.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ct.1990_2019.19ages.exe">ct.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 282 KB)</span>, <a href="yr1990_2019.19ages/ct.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">District of Columbia</th>
+                <td><a href="yr1969_2019.19ages/dc.1969_2019.19ages.exe">dc.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 194 KB)</span>, <a href="yr1969_2019.19ages/dc.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/dc.1990_2019.19ages.exe">dc.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 199 KB)</span>, <a href="yr1990_2019.19ages/dc.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Delaware</th>
+                <td><a href="yr1969_2019.19ages/de.1969_2019.19ages.exe">de.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 212 KB)</span>, <a href="yr1969_2019.19ages/de.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/de.1990_2019.19ages.exe">de.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 231 KB)</span>, <a href="yr1990_2019.19ages/de.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Florida</th>
+                <td><a href="yr1969_2019.19ages/fl.1969_2019.19ages.exe">fl.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 733 KB)</span>, <a href="yr1969_2019.19ages/fl.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/fl.1990_2019.19ages.exe">fl.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 845 KB)</span>, <a href="yr1990_2019.19ages/fl.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Georgia</th>
+                <td><a href="yr1969_2019.19ages/ga.1969_2019.19ages.exe">ga.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 1.2 MB)</span>, <a href="yr1969_2019.19ages/ga.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ga.1990_2019.19ages.exe">ga.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 1.3 MB)</span>, <a href="yr1990_2019.19ages/ga.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Hawaii</th>
+                <td><a href="yr1969_2019.19ages/hi.1969_2019.19ages.exe">hi.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 207 KB)</span>, <a href="yr1969_2019.19ages/hi.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/hi.1990_2019.19ages.exe">hi.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 232 KB)</span>, <a href="yr1990_2019.19ages/hi.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Iowa</th>
+                <td><a href="yr1969_2019.19ages/ia.1969_2019.19ages.exe">ia.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 732 KB)</span>, <a href="yr1969_2019.19ages/ia.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ia.1990_2019.19ages.exe">ia.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 731 KB)</span>, <a href="yr1990_2019.19ages/ia.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Idaho</th>
+                <td><a href="yr1969_2019.19ages/id.1969_2019.19ages.exe">id.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 443 KB)</span>, <a href="yr1969_2019.19ages/id.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/id.1990_2019.19ages.exe">id.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 473 KB)</span>, <a href="yr1990_2019.19ages/id.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Illinois</th>
+                <td><a href="yr1969_2019.19ages/il.1969_2019.19ages.exe">il.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 853 KB)</span>, <a href="yr1969_2019.19ages/il.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/il.1990_2019.19ages.exe">il.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 878 KB)</span>, <a href="yr1990_2019.19ages/il.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Indiana</th>
+                <td><a href="yr1969_2019.19ages/in.1969_2019.19ages.exe">in.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 789 KB)</span>, <a href="yr1969_2019.19ages/in.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/in.1990_2019.19ages.exe">in.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 820 KB)</span>, <a href="yr1990_2019.19ages/in.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Kansas</th>
+                <td><a href="yr1969_2019.19ages/ks.1969_2019.19ages.exe">ks.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 745 KB)</span>, <a href="yr1969_2019.19ages/ks.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ks.1990_2019.19ages.exe">ks.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 746 KB)</span>, <a href="yr1990_2019.19ages/ks.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Kentucky</th>
+                <td><a href="yr1969_2019.19ages/ky.1969_2019.19ages.exe">ky.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 887 KB)</span>, <a href="yr1969_2019.19ages/ky.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ky.1990_2019.19ages.exe">ky.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 888 KB)</span>, <a href="yr1990_2019.19ages/ky.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Massachusetts</th>
+                <td><a href="yr1969_2019.19ages/ma.1969_2019.19ages.exe">ma.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 305 KB)</span>, <a href="yr1969_2019.19ages/ma.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ma.1990_2019.19ages.exe">ma.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 346 KB)</span>, <a href="yr1990_2019.19ages/ma.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Maryland</th>
+                <td><a href="yr1969_2019.19ages/md.1969_2019.19ages.exe">md.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 383 KB)</span>, <a href="yr1969_2019.19ages/md.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/md.1990_2019.19ages.exe">md.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 426 KB)</span>, <a href="yr1990_2019.19ages/md.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Maine</th>
+                <td><a href="yr1969_2019.19ages/me.1969_2019.19ages.exe">me.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 303 KB)</span>, <a href="yr1969_2019.19ages/me.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/me.1990_2019.19ages.exe">me.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 309 KB)</span>, <a href="yr1990_2019.19ages/me.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Michigan</th>
+                <td><a href="yr1969_2019.19ages/mi.1969_2019.19ages.exe">mi.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 776 KB)</span>, <a href="yr1969_2019.19ages/mi.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/mi.1990_2019.19ages.exe">mi.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 875 KB)</span>, <a href="yr1990_2019.19ages/mi.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Minnesota</th>
+                <td><a href="yr1969_2019.19ages/mn.1969_2019.19ages.exe">mn.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 751 KB)</span>, <a href="yr1969_2019.19ages/mn.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/mn.1990_2019.19ages.exe">mn.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 762 KB)</span>, <a href="yr1990_2019.19ages/mn.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Missouri</th>
+                <td><a href="yr1969_2019.19ages/mo.1969_2019.19ages.exe">mo.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 874 KB)</span>, <a href="yr1969_2019.19ages/mo.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/mo.1990_2019.19ages.exe">mo.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 956 KB)</span>, <a href="yr1990_2019.19ages/mo.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Montana</th>
+                <td><a href="yr1969_2019.19ages/mt.1969_2019.19ages.exe">mt.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 469 KB)</span>, <a href="yr1969_2019.19ages/mt.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/mt.1990_2019.19ages.exe">mt.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 461 KB)</span>, <a href="yr1990_2019.19ages/mt.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">North  Carolina</th>
+                <td><a href="yr1969_2019.19ages/nc.1969_2019.19ages.exe">nc.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 948 KB)</span>, <a href="yr1969_2019.19ages/nc.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/nc.1990_2019.19ages.exe">nc.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 1.0 MB)</span>, <a href="yr1990_2019.19ages/nc.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">North  Dakota</th>
+                <td><a href="yr1969_2019.19ages/nd.1969_2019.19ages.exe">nd.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 420 KB)</span>, <a href="yr1969_2019.19ages/nd.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/nd.1990_2019.19ages.exe">nd.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 410 KB)</span>, <a href="yr1990_2019.19ages/nd.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Nebraska</th>
+                <td><a href="yr1969_2019.19ages/ne.1969_2019.19ages.exe">ne.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 574 KB)</span>, <a href="yr1969_2019.19ages/ne.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ne.1990_2019.19ages.exe">ne.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 588 KB)</span>, <a href="yr1990_2019.19ages/ne.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">New Hampshire</th>
+                <td><a href="yr1969_2019.19ages/nh.1969_2019.19ages.exe">nh.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 268 KB)</span>, <a href="yr1969_2019.19ages/nh.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/nh.1990_2019.19ages.exe">nh.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 292 KB)</span>, <a href="yr1990_2019.19ages/nh.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">New Jersey</th>
+                <td><a href="yr1969_2019.19ages/nj.1969_2019.19ages.exe">nj.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 376 KB)</span>, <a href="yr1969_2019.19ages/nj.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/nj.1990_2019.19ages.exe">nj.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 440 KB)</span>, <a href="yr1990_2019.19ages/nj.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">New  Mexico</th>
+                <td><a href="yr1969_2019.19ages/nm.1969_2019.19ages.exe">nm.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 412 KB)</span>, <a href="yr1969_2019.19ages/nm.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/nm.1990_2019.19ages.exe">nm.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 456 KB)</span>, <a href="yr1990_2019.19ages/nm.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Nevada</th>
+                <td><a href="yr1969_2019.19ages/nv.1969_2019.19ages.exe">nv.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 299 KB)</span>, <a href="yr1969_2019.19ages/nv.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/nv.1990_2019.19ages.exe">nv.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 328 KB)</span>, <a href="yr1990_2019.19ages/nv.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">New York</th>
+                <td><a href="yr1969_2019.19ages/ny.1969_2019.19ages.exe">ny.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 695 KB)</span>, <a href="yr1969_2019.19ages/ny.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ny.1990_2019.19ages.exe">ny.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 768 KB)</span>, <a href="yr1990_2019.19ages/ny.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Ohio</th>
+                <td><a href="yr1969_2019.19ages/oh.1969_2019.19ages.exe">oh.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 802 KB)</span>, <a href="yr1969_2019.19ages/oh.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/oh.1990_2019.19ages.exe">oh.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 880 KB)</span>, <a href="yr1990_2019.19ages/oh.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Oklahoma</th>
+                <td><a href="yr1969_2019.19ages/ok.1969_2019.19ages.exe">ok.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 701 KB)</span>, <a href="yr1969_2019.19ages/ok.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ok.1990_2019.19ages.exe">ok.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 802 KB)</span>, <a href="yr1990_2019.19ages/ok.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Oregon</th>
+                <td><a href="yr1969_2019.19ages/or.1969_2019.19ages.exe">or.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 431 KB)</span>, <a href="yr1969_2019.19ages/or.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/or.1990_2019.19ages.exe">or.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 479 KB)</span>, <a href="yr1990_2019.19ages/or.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Pennsylvania</th>
+                <td><a href="yr1969_2019.19ages/pa.1969_2019.19ages.exe">pa.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 702 KB)</span>, <a href="yr1969_2019.19ages/pa.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/pa.1990_2019.19ages.exe">pa.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 774 KB)</span>, <a href="yr1990_2019.19ages/pa.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Rhode Island</th>
+                <td><a href="yr1969_2019.19ages/ri.1969_2019.19ages.exe">ri.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 225 KB)</span>, <a href="yr1969_2019.19ages/ri.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ri.1990_2019.19ages.exe">ri.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 244 KB)</span>, <a href="yr1990_2019.19ages/ri.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">South Carolina</th>
+                <td><a href="yr1969_2019.19ages/sc.1969_2019.19ages.exe">sc.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 547 KB)</span>, <a href="yr1969_2019.19ages/sc.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/sc.1990_2019.19ages.exe">sc.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 603 KB)</span>, <a href="yr1990_2019.19ages/sc.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">South Dakota</th>
+                <td><a href="yr1969_2019.19ages/sd.1969_2019.19ages.exe">sd.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 505 KB)</span>, <a href="yr1969_2019.19ages/sd.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/sd.1990_2019.19ages.exe">sd.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 483 KB)</span>, <a href="yr1990_2019.19ages/sd.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Tennessee</th>
+                <td><a href="yr1969_2019.19ages/tn.1969_2019.19ages.exe">tn.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 798 KB)</span>, <a href="yr1969_2019.19ages/tn.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/tn.1990_2019.19ages.exe">tn.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 914 KB)</span>, <a href="yr1990_2019.19ages/tn.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Utah</th>
+                <td><a href="yr1969_2019.19ages/ut.1969_2019.19ages.exe">ut.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 367 KB)</span>, <a href="yr1969_2019.19ages/ut.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/ut.1990_2019.19ages.exe">ut.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 397 KB)</span>, <a href="yr1990_2019.19ages/ut.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Virginia</th>
+                <td><a href="yr1969_2019.19ages/va.1969_2019.19ages.exe">va.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 1.1 MB)</span>, <a href="yr1969_2019.19ages/va.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/va.1990_2019.19ages.exe">va.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 1.2 MB)</span>, <a href="yr1990_2019.19ages/va.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Vermont</th>
+                <td><a href="yr1969_2019.19ages/vt.1969_2019.19ages.exe">vt.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 290 KB)</span>, <a href="yr1969_2019.19ages/vt.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/vt.1990_2019.19ages.exe">vt.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 295 KB)</span>, <a href="yr1990_2019.19ages/vt.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Washington</th>
+                <td><a href="yr1969_2019.19ages/wa.1969_2019.19ages.exe">wa.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 485 KB)</span>, <a href="yr1969_2019.19ages/wa.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/wa.1990_2019.19ages.exe">wa.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 543 KB)</span>, <a href="yr1990_2019.19ages/wa.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Wisconsin</th>
+                <td><a href="yr1969_2019.19ages/wi.1969_2019.19ages.exe">wi.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 690 KB)</span>, <a href="yr1969_2019.19ages/wi.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/wi.1990_2019.19ages.exe">wi.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 761 KB)</span>, <a href="yr1990_2019.19ages/wi.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">West Virginia</th>
+                <td><a href="yr1969_2019.19ages/wv.1969_2019.19ages.exe">wv.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 533 KB)</span>, <a href="yr1969_2019.19ages/wv.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/wv.1990_2019.19ages.exe">wv.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 506 KB)</span>, <a href="yr1990_2019.19ages/wv.1990_2019.19ages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Wyoming</th>
+                <td><a href="yr1969_2019.19ages/wy.1969_2019.19ages.exe">wy.1969_2019.19ages.exe</a> <span class="docinfo">(EXE, 335 KB)</span>, <a href="yr1969_2019.19ages/wy.1969_2019.19ages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.19ages/wy.1990_2019.19ages.exe">wy.1990_2019.19ages.exe</a> <span class="docinfo">(EXE, 338 KB)</span>, <a href="yr1990_2019.19ages/wy.1990_2019.19ages.txt.gz">.gz</a></td>
+             </tr>
+             </tbody>
+           </table>
+           </div>
+
+<div class="table-responsive">
+		   <table class="even_alternating">
+			  <h3 class="caption">County-Level Population Files - Single-year Age Groups</h3>
+			  <thead>
+              <tr>
+                <th class="secthead_center" scope="col">State</th>
+                <th class="secthead_center" scope="col"> 1969-2019 <br>
+                  White, Black, Other</th>
+                <th class="secthead_center" scope="col">1990-2019 <br>
+                  4 Expanded Races by 
+                  Origin</th>
+              </tr>
+        </thead>
+        <tbody>
+              <tr>
+                <th scope="row">All States Combined <br>
+                  (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.singleages/us.1969_2019.singleages.adjusted.exe">us.1969_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 89.7 MB)</span>, <a href="yr1969_2019.singleages/us.1969_2019.singleages.adjusted.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/us.1990_2019.singleages.adjusted.exe">us.1990_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 88.2 MB)</span>, <a href="yr1990_2019.singleages/us.1990_2019.singleages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">All States Combined</th>
+                <td><a href="yr1969_2019.singleages/us.1969_2019.singleages.exe">us.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 89.7 MB)</span>, <a href="yr1969_2019.singleages/us.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/us.1990_2019.singleages.exe">us.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 88.2 MB)</span>, <a href="yr1990_2019.singleages/us.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Alabama (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.singleages/al.1969_2019.singleages.adjusted.exe"> al.1969_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1969_2019.singleages/al.1969_2019.singleages.adjusted.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/al.1990_2019.singleages.adjusted.exe"> al.1990_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1990_2019.singleages/al.1990_2019.singleages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Alabama</th>
+                <td><a href="yr1969_2019.singleages/al.1969_2019.singleages.exe"> al.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1969_2019.singleages/al.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/al.1990_2019.singleages.exe"> al.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1990_2019.singleages/al.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Louisiana (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.singleages/la.1969_2019.singleages.adjusted.exe"> la.1969_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1969_2019.singleages/la.1969_2019.singleages.adjusted.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/la.1990_2019.singleages.adjusted.exe"> la.1990_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 2.1 MB)</span>, <a href="yr1990_2019.singleages/la.1990_2019.singleages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Louisiana</th>
+                <td><a href="yr1969_2019.singleages/la.1969_2019.singleages.exe"> la.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1969_2019.singleages/la.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/la.1990_2019.singleages.exe"> la.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.1 MB)</span>, <a href="yr1990_2019.singleages/la.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Mississippi (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.singleages/ms.1969_2019.singleages.adjusted.exe"> ms.1969_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 2.2 MB)</span>, <a href="yr1969_2019.singleages/ms.1969_2019.singleages.adjusted.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ms.1990_2019.singleages.adjusted.exe"> ms.1990_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1990_2019.singleages/ms.1990_2019.singleages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Mississippi</th>
+                <td><a href="yr1969_2019.singleages/ms.1969_2019.singleages.exe"> ms.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.2 MB)</span>, <a href="yr1969_2019.singleages/ms.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ms.1990_2019.singleages.exe"> ms.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1990_2019.singleages/ms.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Texas (<a href="/popdata/hurricane_adj.html">adjusted</a>)</th>
+                <td><a href="yr1969_2019.singleages/tx.1969_2019.singleages.adjusted.exe"> tx.1969_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 6.4 MB)</span>, <a href="yr1969_2019.singleages/tx.1969_2019.singleages.adjusted.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/tx.1990_2019.singleages.adjusted.exe"> tx.1990_2019.singleages.adjusted.exe</a> <span class="docinfo">(EXE, 7.0 MB)</span>, <a href="yr1990_2019.singleages/tx.1990_2019.singleages.adjusted.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Texas</th>
+                <td><a href="yr1969_2019.singleages/tx.1969_2019.singleages.exe"> tx.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 6.4 MB)</span>, <a href="yr1969_2019.singleages/tx.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/tx.1990_2019.singleages.exe"> tx.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 7.0 MB)</span>, <a href="yr1990_2019.singleages/tx.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Alaska</th>
+                <td><a href="yr1969_2019.singleages/ak.1969_2019.singleages.exe"> ak.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 628 KB)</span>, <a href="yr1969_2019.singleages/ak.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ak.1990_2019.singleages.exe"> ak.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 847 KB)</span>, <a href="yr1990_2019.singleages/ak.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Arkansas</th>
+                <td><a href="yr1969_2019.singleages/ar.1969_2019.singleages.exe"> ar.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1969_2019.singleages/ar.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ar.1990_2019.singleages.exe"> ar.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.9 MB)</span>, <a href="yr1990_2019.singleages/ar.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Arizona</th>
+                <td><a href="yr1969_2019.singleages/az.1969_2019.singleages.exe"> az.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 709 KB)</span>, <a href="yr1969_2019.singleages/az.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/az.1990_2019.singleages.exe"> az.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 865 KB)</span>, <a href="yr1990_2019.singleages/az.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">California</th>
+                <td><a href="yr1969_2019.singleages/ca.1969_2019.singleages.exe"> ca.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.3 MB)</span>, <a href="yr1969_2019.singleages/ca.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ca.1990_2019.singleages.exe"> ca.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 3.0 MB)</span>, <a href="yr1990_2019.singleages/ca.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Colorado</th>
+                <td><a href="yr1969_2019.singleages/co.1969_2019.singleages.exe"> co.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.6 MB)</span>, <a href="yr1969_2019.singleages/co.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/co.1990_2019.singleages.exe"> co.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.8 MB)</span>, <a href="yr1990_2019.singleages/co.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Connecticut</th>
+                <td><a href="yr1969_2019.singleages/ct.1969_2019.singleages.exe"> ct.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 471 KB)</span>, <a href="yr1969_2019.singleages/ct.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ct.1990_2019.singleages.exe"> ct.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 600 KB)</span>, <a href="yr1990_2019.singleages/ct.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">District of Columbia</th>
+                <td><a href="yr1969_2019.singleages/dc.1969_2019.singleages.exe"> dc.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 228 KB)</span>, <a href="yr1969_2019.singleages/dc.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/dc.1990_2019.singleages.exe"> dc.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 245 KB)</span>, <a href="yr1990_2019.singleages/dc.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Delaware</th>
+                <td><a href="yr1969_2019.singleages/de.1969_2019.singleages.exe"> de.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 303 KB)</span>, <a href="yr1969_2019.singleages/de.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/de.1990_2019.singleages.exe"> de.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 343 KB)</span>, <a href="yr1990_2019.singleages/de.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Florida</th>
+                <td><a href="yr1969_2019.singleages/fl.1969_2019.singleages.exe"> fl.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.3 MB)</span>, <a href="yr1969_2019.singleages/fl.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/fl.1990_2019.singleages.exe"> fl.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.8 MB)</span>, <a href="yr1990_2019.singleages/fl.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Georgia</th>
+                <td><a href="yr1969_2019.singleages/ga.1969_2019.singleages.exe"> ga.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 4.4 MB)</span>, <a href="yr1969_2019.singleages/ga.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ga.1990_2019.singleages.exe"> ga.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 4.3 MB)</span>, <a href="yr1990_2019.singleages/ga.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Hawaii</th>
+                <td><a href="yr1969_2019.singleages/hi.1969_2019.singleages.exe"> hi.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 288 KB)</span>, <a href="yr1969_2019.singleages/hi.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/hi.1990_2019.singleages.exe"> hi.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 359 KB)</span>, <a href="yr1990_2019.singleages/hi.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Iowa</th>
+                <td><a href="yr1969_2019.singleages/ia.1969_2019.singleages.exe"> ia.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.1 MB)</span>, <a href="yr1969_2019.singleages/ia.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ia.1990_2019.singleages.exe"> ia.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.9 MB)</span>, <a href="yr1990_2019.singleages/ia.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Idaho</th>
+                <td><a href="yr1969_2019.singleages/id.1969_2019.singleages.exe"> id.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.1 MB)</span>, <a href="yr1969_2019.singleages/id.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/id.1990_2019.singleages.exe"> id.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.1 MB)</span>, <a href="yr1990_2019.singleages/id.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Illinois</th>
+                <td><a href="yr1969_2019.singleages/il.1969_2019.singleages.exe"> il.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.6 MB)</span>, <a href="yr1969_2019.singleages/il.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/il.1990_2019.singleages.exe"> il.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.6 MB)</span>, <a href="yr1990_2019.singleages/il.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Indiana</th>
+                <td><a href="yr1969_2019.singleages/in.1969_2019.singleages.exe"> in.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.4 MB)</span>, <a href="yr1969_2019.singleages/in.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/in.1990_2019.singleages.exe"> in.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.4 MB)</span>, <a href="yr1990_2019.singleages/in.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Kansas</th>
+                <td><a href="yr1969_2019.singleages/ks.1969_2019.singleages.exe"> ks.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.1 MB)</span>, <a href="yr1969_2019.singleages/ks.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ks.1990_2019.singleages.exe"> ks.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.1 MB)</span>, <a href="yr1990_2019.singleages/ks.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Kentucky</th>
+                <td><a href="yr1969_2019.singleages/ky.1969_2019.singleages.exe"> ky.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.8 MB)</span>, <a href="yr1969_2019.singleages/ky.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ky.1990_2019.singleages.exe"> ky.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.5 MB)</span>, <a href="yr1990_2019.singleages/ky.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Massachusetts</th>
+                <td><a href="yr1969_2019.singleages/ma.1969_2019.singleages.exe"> ma.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 649 KB)</span>, <a href="yr1969_2019.singleages/ma.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ma.1990_2019.singleages.exe"> ma.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 849 KB)</span>, <a href="yr1990_2019.singleages/ma.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Maryland</th>
+                <td><a href="yr1969_2019.singleages/md.1969_2019.singleages.exe"> md.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 972 KB)</span>, <a href="yr1969_2019.singleages/md.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/md.1990_2019.singleages.exe"> md.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.1 MB)</span>, <a href="yr1990_2019.singleages/md.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Maine</th>
+                <td><a href="yr1969_2019.singleages/me.1969_2019.singleages.exe"> me.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 650 KB)</span>, <a href="yr1969_2019.singleages/me.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/me.1990_2019.singleages.exe"> me.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 638 KB)</span>, <a href="yr1990_2019.singleages/me.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Michigan</th>
+                <td><a href="yr1969_2019.singleages/mi.1969_2019.singleages.exe"> mi.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.4 MB)</span>, <a href="yr1969_2019.singleages/mi.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/mi.1990_2019.singleages.exe"> mi.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.5 MB)</span>, <a href="yr1990_2019.singleages/mi.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Minnesota</th>
+                <td><a href="yr1969_2019.singleages/mn.1969_2019.singleages.exe"> mn.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.1 MB)</span>, <a href="yr1969_2019.singleages/mn.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/mn.1990_2019.singleages.exe"> mn.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1990_2019.singleages/mn.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Missouri</th>
+                <td><a href="yr1969_2019.singleages/mo.1969_2019.singleages.exe"> mo.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.7 MB)</span>, <a href="yr1969_2019.singleages/mo.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/mo.1990_2019.singleages.exe"> mo.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.6 MB)</span>, <a href="yr1990_2019.singleages/mo.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Montana</th>
+                <td><a href="yr1969_2019.singleages/mt.1969_2019.singleages.exe"> mt.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.1 MB)</span>, <a href="yr1969_2019.singleages/mt.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/mt.1990_2019.singleages.exe"> mt.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 948 KB)</span>, <a href="yr1990_2019.singleages/mt.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">North Carolina</th>
+                <td><a href="yr1969_2019.singleages/nc.1969_2019.singleages.exe"> nc.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 3.0 MB)</span>, <a href="yr1969_2019.singleages/nc.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/nc.1990_2019.singleages.exe"> nc.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 3.3 MB)</span>, <a href="yr1990_2019.singleages/nc.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">North  Dakota</th>
+                <td><a href="yr1969_2019.singleages/nd.1969_2019.singleages.exe"> nd.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 892 KB)</span>, <a href="yr1969_2019.singleages/nd.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/nd.1990_2019.singleages.exe"> nd.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 895 KB)</span>, <a href="yr1990_2019.singleages/nd.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Nebraska</th>
+                <td><a href="yr1969_2019.singleages/ne.1969_2019.singleages.exe"> ne.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.4 MB)</span>, <a href="yr1969_2019.singleages/ne.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ne.1990_2019.singleages.exe"> ne.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.5 MB)</span>, <a href="yr1990_2019.singleages/ne.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">New Hampshire</th>
+                <td><a href="yr1969_2019.singleages/nh.1969_2019.singleages.exe"> nh.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 502 KB)</span>, <a href="yr1969_2019.singleages/nh.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/nh.1990_2019.singleages.exe"> nh.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 520 KB)</span>, <a href="yr1990_2019.singleages/nh.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">New Jersey</th>
+                <td><a href="yr1969_2019.singleages/nj.1969_2019.singleages.exe"> nj.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1000 KB)</span>, <a href="yr1969_2019.singleages/nj.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/nj.1990_2019.singleages.exe"> nj.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.3 MB)</span>, <a href="yr1990_2019.singleages/nj.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">New Mexico</th>
+                <td><a href="yr1969_2019.singleages/nm.1969_2019.singleages.exe"> nm.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.0 MB)</span>, <a href="yr1969_2019.singleages/nm.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/nm.1990_2019.singleages.exe"> nm.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.3 MB)</span>, <a href="yr1990_2019.singleages/nm.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Nevada</th>
+                <td><a href="yr1969_2019.singleages/nv.1969_2019.singleages.exe"> nv.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 621 KB)</span>, <a href="yr1969_2019.singleages/nv.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/nv.1990_2019.singleages.exe"> nv.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 683 KB)</span>, <a href="yr1990_2019.singleages/nv.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">New York</th>
+                <td><a href="yr1969_2019.singleages/ny.1969_2019.singleages.exe"> ny.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.2 MB)</span>, <a href="yr1969_2019.singleages/ny.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ny.1990_2019.singleages.exe"> ny.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.5 MB)</span>, <a href="yr1990_2019.singleages/ny.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Ohio</th>
+                <td><a href="yr1969_2019.singleages/oh.1969_2019.singleages.exe"> oh.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.7 MB)</span>, <a href="yr1969_2019.singleages/oh.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/oh.1990_2019.singleages.exe"> oh.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.8 MB)</span>, <a href="yr1990_2019.singleages/oh.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Oklahoma</th>
+                <td><a href="yr1969_2019.singleages/ok.1969_2019.singleages.exe"> ok.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.5 MB)</span>, <a href="yr1969_2019.singleages/ok.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ok.1990_2019.singleages.exe"> ok.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.4 MB)</span>, <a href="yr1990_2019.singleages/ok.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Oregon</th>
+                <td><a href="yr1969_2019.singleages/or.1969_2019.singleages.exe"> or.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.2 MB)</span>, <a href="yr1969_2019.singleages/or.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/or.1990_2019.singleages.exe"> or.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.3 MB)</span>, <a href="yr1990_2019.singleages/or.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Pennsylvania</th>
+                <td><a href="yr1969_2019.singleages/pa.1969_2019.singleages.exe"> pa.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.2 MB)</span>, <a href="yr1969_2019.singleages/pa.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/pa.1990_2019.singleages.exe"> pa.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.3 MB)</span>, <a href="yr1990_2019.singleages/pa.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Rhode Island</th>
+                <td><a href="yr1969_2019.singleages/ri.1969_2019.singleages.exe"> ri.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 357 KB)</span>, <a href="yr1969_2019.singleages/ri.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ri.1990_2019.singleages.exe"> ri.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 397 KB)</span>, <a href="yr1990_2019.singleages/ri.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">South Carolina</th>
+                <td><a href="yr1969_2019.singleages/sc.1969_2019.singleages.exe"> sc.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.5 MB)</span>, <a href="yr1969_2019.singleages/sc.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/sc.1990_2019.singleages.exe"> sc.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.7 MB)</span>, <a href="yr1990_2019.singleages/sc.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">South  Dakota</th>
+                <td><a href="yr1969_2019.singleages/sd.1969_2019.singleages.exe"> sd.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.3 MB)</span>, <a href="yr1969_2019.singleages/sd.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/sd.1990_2019.singleages.exe"> sd.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.1 MB)</span>, <a href="yr1990_2019.singleages/sd.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Tennessee</th>
+                <td><a href="yr1969_2019.singleages/tn.1969_2019.singleages.exe"> tn.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.5 MB)</span>, <a href="yr1969_2019.singleages/tn.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/tn.1990_2019.singleages.exe"> tn.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.5 MB)</span>, <a href="yr1990_2019.singleages/tn.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Utah</th>
+                <td><a href="yr1969_2019.singleages/ut.1969_2019.singleages.exe"> ut.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 841 KB)</span>, <a href="yr1969_2019.singleages/ut.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/ut.1990_2019.singleages.exe"> ut.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 925 KB)</span>, <a href="yr1990_2019.singleages/ut.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Virginia</th>
+                <td><a href="yr1969_2019.singleages/va.1969_2019.singleages.exe"> va.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 3.6 MB)</span>, <a href="yr1969_2019.singleages/va.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/va.1990_2019.singleages.exe"> va.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 3.7 MB)</span>, <a href="yr1990_2019.singleages/va.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Vermont</th>
+                <td><a href="yr1969_2019.singleages/vt.1969_2019.singleages.exe"> vt.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 531 KB)</span>, <a href="yr1969_2019.singleages/vt.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/vt.1990_2019.singleages.exe"> vt.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 510 KB)</span>, <a href="yr1990_2019.singleages/vt.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Washington</th>
+                <td><a href="yr1969_2019.singleages/wa.1969_2019.singleages.exe"> wa.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.3 MB)</span>, <a href="yr1969_2019.singleages/wa.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/wa.1990_2019.singleages.exe"> wa.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.6 MB)</span>, <a href="yr1990_2019.singleages/wa.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Wisconsin</th>
+                <td><a href="yr1969_2019.singleages/wi.1969_2019.singleages.exe"> wi.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1969_2019.singleages/wi.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/wi.1990_2019.singleages.exe"> wi.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 2.0 MB)</span>, <a href="yr1990_2019.singleages/wi.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">West  Virginia</th>
+                <td><a href="yr1969_2019.singleages/wv.1969_2019.singleages.exe"> wv.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.4 MB)</span>, <a href="yr1969_2019.singleages/wv.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/wv.1990_2019.singleages.exe"> wv.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 1.2 MB)</span>, <a href="yr1990_2019.singleages/wv.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Wyoming</th>
+                <td><a href="yr1969_2019.singleages/wy.1969_2019.singleages.exe"> wy.1969_2019.singleages.exe</a> <span class="docinfo">(EXE, 695 KB)</span>, <a href="yr1969_2019.singleages/wy.1969_2019.singleages.txt.gz">.gz</a></td>
+                <td><a href="yr1990_2019.singleages/wy.1990_2019.singleages.exe"> wy.1990_2019.singleages.exe</a> <span class="docinfo">(EXE, 693 KB)</span>, <a href="yr1990_2019.singleages/wy.1990_2019.singleages.txt.gz">.gz</a></td>
+              </tr>
+              </tbody>
+            </table>
+            </div><!--/body_content-->        </main>
+        </div><!--close row-->
+    <img src="/i/right-body.png" alt="" class="bg-back"></div>
+    
+    <div class="wrapper">
+        <meta http-equiv="last_modified" content="Tue, 02 Feb 2021 14:27:58 -0500" />
+    </div>
+</div>
+
+<!-- Blue Footer -->
+<footer class="footer" role="contentinfo">
+	<a class="returntop" href="#content" style="display: inline;"><span>Return to Top</span></a>
+	<div class="container">
+    	<div class="row">
+    		<div class="col-md-10 col-md-offset-1">
+				<p class="seer-logo">SEER is supported by the <a href="https://surveillance.cancer.gov/">Surveillance Research Program (SRP)</a> in NCI's <a href="https://cancercontrol.cancer.gov/">Division of Cancer Control and Population Sciences (DCCPS)</a>. SRP provides national leadership in the science of cancer surveillance as well as analytical tools and methodological expertise in collecting, analyzing, interpreting, and disseminating reliable population-based statistics.</p>
+			</div>
+        </div>
+	</div>
+	
+	<div class="footer-links">
+    	<div class="container"> 
+			<div class="row links-col">
+				<div class="col-sm-3">
+					<h2>Follow SEER</h2>
+					<ul class="social">
+						<li><a href="https://twitter.com/NCICancerStats"><img src="/i/twitter.png" alt="Twitter"></a></li>
+						<li><a href="https://surveillance.cancer.gov/blog"><img src="/i/blog-icon.png" alt="SRP Blog"></a></li>
+					</ul>
+				</div>
+				
+				<div class="col-sm-3">
+					<h2>Contact Information</h2>
+					<ul>        	
+						<li><a href="/about/contact.html">Contact SEER</a></li>
+						<li><a href="https://livehelp.cancer.gov/">NCI LiveHelp Online Chat</a></li>
+					</ul>
+				</div>
+				
+				<div class="col-sm-3">
+					<h2>More Information</h2>
+					<ul>    
+						<li><a href="https://surveillance.cancer.gov/jobs/">Careers</a></li>	
+						<li><a href="/sitemap.html">Sitemap</a></li>
+						<li><a href="/about/using-website.html">Using This Website</a></li>
+					</ul>
+				</div>	
+				
+				<div class="col-sm-3">
+					<h2>Policies</h2>
+					<ul>        						
+						<li><a href="https://www.cancer.gov/policies/accessibility">Accessibility</a></li>
+						<li><a href="https://www.cancer.gov/policies/disclaimer">Disclaimer</a></li>
+						<li><a href="https://www.cancer.gov/policies/foia">FOIA</a></li>
+						<li><a href="https://www.cancer.gov/policies/privacy-security">Privacy &amp; Security</a></li>
+						<li><a href="https://www.cancer.gov/policies/copyright-reuse">Reuse of Graphics and Text</a></li>
+						<li><a href="https://www.cancer.gov/policies/linking">Website Linking</a></li>
+					</ul>
+				</div>	
+			</div>
+
+			<ul class="linkList">
+				<li><a href="https://www.hhs.gov/">U.S. Department of Health and Human Services</a></li>
+				<li><a href="https://www.nih.gov/">National Institutes of Health</a></li>
+				<li><a href="https://www.cancer.gov/">National Cancer Institute</a></li>
+				<li class="last"><a href="https://www.usa.gov/">USA.gov</a></li>
+			</ul>
+			<p class="center">NIH... Turning Discovery Into Health<sup>&reg;</sup></p>
+    	</div>
+	</div>
+</footer>
+
+
+<script type="text/javascript" src="/j/general.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/toolbox/javascript/jquery-ui-1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/j/mnav.js" type="text/javascript"></script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58af0e69573f72ef"></script> 
+<script type="text/javascript" src="/j/addthis_override.js"></script>
+
+<!-- NCI WEB ANALYTICS CODE -->
+<script src="//static.cancer.gov/webanalytics/WA_DCCPS_PageLoad.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125238734-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125238734-1');
+</script>
+<!-- Additional Scripts -->
+
+</body>
+</html>
+ 
